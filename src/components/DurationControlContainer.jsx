@@ -7,14 +7,14 @@ import AddValueBtn from "./AddValueBtn";
 function DurationControlContainer({ id, state, stateSetter }) {
 	return (
 		<div className="flex flex-col justify-center items-center gap-2">
-			<h2 id={`${id}-label`} className="capitalize text-2xl">
+			<h2 id={`${id}-label`} className="capitalize text-2xl text-primary-green">
 				{`${id} length`}
 			</h2>
 
 			<div className="flex justify-center items-center gap-5">
 				<AddValueBtn id={`${id}-decrement`} btnIcon={faArrowDown} valueAddedOnClick={-1} stateSetter={stateSetter} />
 				
-				<p id={`${id}-length`} className="text-lg">
+				<p id={`${id}-length`} className="text-lg text-primary-green">
 					{state}
 				</p>
 				
