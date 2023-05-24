@@ -1,6 +1,7 @@
 const DEFAULT_VALUES = {
 	SESSION: 25,
-	BREAK: 5
+	BREAK: 5,
+	TIMER_PLAYING: false
 };
 
 const DURATION_RANGE = {
