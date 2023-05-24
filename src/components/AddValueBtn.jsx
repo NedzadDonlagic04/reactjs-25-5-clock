@@ -2,8 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import PropTypes from 'prop-types';
 
-const MIN = 1;
-const MAX = 60;
+import { DURATION_RANGE } from './../exports/constants';
+
+const { MIN, MAX } = DURATION_RANGE;
 
 function AddValueBtn({ id, btnIcon, valueAddedOnClick, stateSetter }) {
 	const onClickHandler = () => stateSetter(state => {

@@ -4,12 +4,11 @@ import { useState } from "react";
 import Title from "./components/Title";
 import DurationControlContainer from "./components/DurationControlContainer";
 
-const DEFAULT_SESSION_LENGTH = 25;
-const DEFAULT_BREAK_LENGTH = 5;
+import { DEFAULT_VALUES } from "./exports/constants";
 
 function App() {
-    const [sessionLength, sessionLengthSetter] = useState(DEFAULT_SESSION_LENGTH);
-    const [breakLength, breakLengthSetter] = useState(DEFAULT_BREAK_LENGTH);
+    const [sessionLength, sessionLengthSetter] = useState(DEFAULT_VALUES.SESSION);
+    const [breakLength, breakLengthSetter] = useState(DEFAULT_VALUES.BREAK);
 
 	return (
 		<React.Fragment>
