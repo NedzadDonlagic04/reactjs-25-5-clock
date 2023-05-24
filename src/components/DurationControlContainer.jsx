@@ -7,7 +7,7 @@ import AddValueBtn from "./AddValueBtn";
 function DurationControlContainer({ id, state, stateSetter }) {
 	return (
 		<div className="flex flex-col justify-center items-center gap-2">
-			<h2 id={`${id}-label`} className="capitalize text-2xl text-primary-green">
+			<h2 id={`${id}-label`} className="capitalize text-2xl text-center text-primary-green">
 				{`${id} length`}
 			</h2>
 
