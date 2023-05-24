@@ -10,14 +10,16 @@ import { DEFAULT_VALUES } from "./exports/constants";
 function App() {
     const [sessionLength, sessionLengthSetter] = useState(DEFAULT_VALUES.SESSION);
     const [breakLength, breakLengthSetter] = useState(DEFAULT_VALUES.BREAK);
+	const [timerPlaying/* , timerPlayingSetter */] = useState(DEFAULT_VALUES.TIMER_PLAYING);
+	//                        ^ in comments to prevent warning due to it not being used
 
 	return (
 		<React.Fragment>
 			<Title text="Let's Start Cooking!" />
 			<Timer />
 			<div className="flex flex-col gap-10 sm:flex-row sm:gap-40">
-				<DurationControlContainer id="session" state={sessionLength} stateSetter={sessionLengthSetter} />
-				<DurationControlContainer id="break" state={breakLength} stateSetter={breakLengthSetter} />
+				<DurationControlContainer id="session" state={sessionLength} stateSetter={sessionLengthSetter} disabled={timerPlaying} />
+				<DurationControlContainer id="break" state={breakLength} stateSetter={breakLengthSetter} disabled={timerPlaying} />
 			</div>
 		</React.Fragment>
 	);
