@@ -13,6 +13,9 @@ export default {
 			},
 			'primary-grey': '#D1DDDB',
 			'primary-green': '#283B42'
+		},
+		scale: {
+			'200': '2'
 		}
 	},
   },
