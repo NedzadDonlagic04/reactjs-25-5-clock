@@ -13,7 +13,7 @@ function App() {
 	return (
 		<React.Fragment>
 			<Title text="Let's Start Cooking!" />
-			<div className="flex gap-40">
+			<div className="flex flex-col gap-10 sm:flex-row sm:gap-40">
 				<DurationControlContainer id="session" state={sessionLength} stateSetter={sessionLengthSetter} />
 				<DurationControlContainer id="break" state={breakLength} stateSetter={breakLengthSetter} />
 			</div>
