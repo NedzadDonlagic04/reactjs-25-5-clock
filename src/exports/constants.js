@@ -1,0 +1,11 @@
+const DEFAULT_VALUES = {
+	SESSION: 25,
+	BREAK: 5
+};
+
+const DURATION_RANGE = {
+	MIN: 1,
+	MAX: 60
+}
+
+export { DEFAULT_VALUES, DURATION_RANGE };
