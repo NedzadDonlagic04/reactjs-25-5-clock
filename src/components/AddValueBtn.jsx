@@ -14,7 +14,7 @@ function AddValueBtn({ id, btnIcon, valueAddedOnClick, stateSetter }) {
 	});
 
 	return (
-		<button id={id} className='cursor-pointer' onClick={onClickHandler}>
+		<button id={id} className='cursor-pointer scale-100 transition-transform duration-150 ease-in-out hover:scale-150' onClick={onClickHandler}>
 			<FontAwesomeIcon className="text-primary-green" icon={btnIcon} />
 		</button>
 	);
