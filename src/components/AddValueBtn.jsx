@@ -6,7 +6,7 @@ import { DURATION_RANGE } from './../exports/constants';
 
 const { MIN, MAX } = DURATION_RANGE;
 
-function AddValueBtn({ id, btnIcon, valueAddedOnClick, stateSetter }) {
+function AddValueBtn({ id, btnIcon, valueAddedOnClick, stateSetter, disabled }) {
 	const onClickHandler = () => stateSetter(state => {
 		const newState = state + valueAddedOnClick;
 
@@ -14,7 +14,10 @@ function AddValueBtn({ id, btnIcon, valueAddedOnClick, stateSetter }) {
 	});
 
 	return (
-		<button id={id} className='cursor-pointer scale-100 transition-transform duration-150 ease-in-out hover:scale-150' onClick={onClickHandler}>
+		<button id={id} 
+				className={'cursor-pointer scale-100 transition-transform duration-150 ease-in-out ' + (disabled ? '' : 'hover:scale-150')}
+				onClick={onClickHandler}
+				disabled={disabled}>
 			<FontAwesomeIcon className="text-primary-green" icon={btnIcon} />
 		</button>
 	);
@@ -28,7 +31,8 @@ AddValueBtn.propTypes = {
 		if(typeof(props[propName]) !== 'function') {
 			throw new Error("Invalid type of '" + propName + "' supplied to" + " '" + componentName + "'. Validation failed.");
 		} 
-	}
+	},
+	disabled: PropTypes.bool.isRequired
 }
 
 export default AddValueBtn;
