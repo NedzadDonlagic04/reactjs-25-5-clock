@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import Title from "./components/Title";
@@ -10,7 +10,15 @@ import { DEFAULT_VALUES, TIMER_STATE } from "./exports/constants";
 function App() {
     const [sessionLength, sessionLengthSetter] = useState(DEFAULT_VALUES.SESSION);
     const [breakLength, breakLengthSetter] = useState(DEFAULT_VALUES.BREAK);
-	const [timerState, timerStateSetter] = useState(TIMER_STATE.RESET);
+	const [timerState, timerStateSetter] = useState(TIMER_STATE.WAITING);
+
+	useEffect(() => {
+		if(timerState === TIMER_STATE.RESET) {
+			sessionLengthSetter(DEFAULT_VALUES.SESSION);
+			breakLengthSetter(DEFAULT_VALUES.BREAK);
+			timerStateSetter(TIMER_STATE.WAITING);
+		}
+	}, [timerState]);
 
 	return (
 		<React.Fragment>
