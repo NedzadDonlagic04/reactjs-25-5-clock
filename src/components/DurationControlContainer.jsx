@@ -32,7 +32,7 @@ DurationControlContainer.propTypes = {
 			throw new Error("Invalid type of '" + propName + "' supplied to" + " '" + componentName + "'. Validation failed.");
 		} 
 	},
-	disabled: PropTypes.bool.isRequired
+	disabled: PropTypes.number.isRequired
 }
 
 export default DurationControlContainer;
