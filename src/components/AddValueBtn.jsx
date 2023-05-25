@@ -10,12 +10,14 @@ const { MAX_HOLD_DURATION, MIN_HOLD_DURATION } = DEFAULT_VALUES;
 let timeoutID = null;
 
 function AddValueBtn({ id, btnIcon, valueAddedOnClick, stateSetter, disabled }) {
+	const onClickHandler = () => stateSetter(state => {
+		const newState = state + valueAddedOnClick;
+
+		return (newState > MAX)? MAX : (newState < MIN)? MIN : newState;
+	});
+
 	const onPointerDownHandler = time => {
-		stateSetter(state => {
-			const newState = state + valueAddedOnClick;
-	
-			return (newState > MAX)? MAX : (newState < MIN)? MIN : newState;
-		});
+		onClickHandler();
 
 		time = (time < MIN_HOLD_DURATION)? MIN_HOLD_DURATION : time / 2;
 
@@ -27,6 +29,7 @@ function AddValueBtn({ id, btnIcon, valueAddedOnClick, stateSetter, disabled }) 
 				className={'cursor-pointer scale-100 transition-transform duration-150 ease-in-out ' + (disabled === TIMER_STATE.WAITING ? 'hover:scale-150' : '')}
 				onPointerDown={() => onPointerDownHandler(MAX_HOLD_DURATION)}
 				onPointerUp={() => clearTimeout(timeoutID)}
+				onClick={onClickHandler}
 				disabled={disabled === TIMER_STATE.WAITING ? false : true}>
 			<FontAwesomeIcon className="text-primary-green" icon={btnIcon} />
 		</button>
