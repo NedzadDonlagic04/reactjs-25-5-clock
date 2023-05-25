@@ -3,10 +3,10 @@ import TimerControls from "./TimerControls";
 
 import PropTypes from 'prop-types';
 
-function Timer({ /* sessionLength, breakLength, */ timerState, timerStateSetter }) {
+function Timer({ sessionLength, breakLength, timerState, timerStateSetter }) {
 	return (
 		<div className="flex flex-col justify-center items-center gap-5">
-			<TimerCountDown timerState={timerState} />
+			<TimerCountDown timerState={timerState} sessionLength={sessionLength} breakLength={breakLength} />
 			
 			<TimerControls timerState={timerState} timerStateSetter={timerStateSetter} />
 		</div>
@@ -22,6 +22,6 @@ Timer.propTypes = {
 			throw new Error("Invalid type of '" + propName + "' supplied to" + " '" + componentName + "'. Validation failed.");
 		} 
 	}
-}
+};
 
 export default Timer;
