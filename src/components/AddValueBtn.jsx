@@ -15,9 +15,9 @@ function AddValueBtn({ id, btnIcon, valueAddedOnClick, stateSetter, disabled }) 
 
 	return (
 		<button id={id} 
-				className={'cursor-pointer scale-100 transition-transform duration-150 ease-in-out ' + (disabled === TIMER_STATE.RESET ? 'hover:scale-150' : '')}
+				className={'cursor-pointer scale-100 transition-transform duration-150 ease-in-out ' + (disabled === TIMER_STATE.WAITING ? 'hover:scale-150' : '')}
 				onClick={onClickHandler}
-				disabled={disabled === TIMER_STATE.RESET ? false : true}>
+				disabled={disabled === TIMER_STATE.WAITING ? false : true}>
 			<FontAwesomeIcon className="text-primary-green" icon={btnIcon} />
 		</button>
 	);
@@ -33,6 +33,6 @@ AddValueBtn.propTypes = {
 		} 
 	},
 	disabled: PropTypes.number.isRequired
-}
+};
 
 export default AddValueBtn;
