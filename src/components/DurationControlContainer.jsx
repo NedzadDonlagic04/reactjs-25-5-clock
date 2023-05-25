@@ -33,6 +33,6 @@ DurationControlContainer.propTypes = {
 		} 
 	},
 	disabled: PropTypes.number.isRequired
-}
+};
 
 export default DurationControlContainer;
