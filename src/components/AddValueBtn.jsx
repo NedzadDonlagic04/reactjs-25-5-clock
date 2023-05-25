@@ -2,21 +2,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import PropTypes from 'prop-types';
 
-import { DURATION_RANGE, TIMER_STATE } from './../exports/constants';
+import { DEFAULT_VALUES, DURATION_RANGE, TIMER_STATE } from './../exports/constants';
 
 const { MIN, MAX } = DURATION_RANGE;
+const { MAX_HOLD_DURATION, MIN_HOLD_DURATION } = DEFAULT_VALUES;
+
+let timeoutID = null;
 
 function AddValueBtn({ id, btnIcon, valueAddedOnClick, stateSetter, disabled }) {
-	const onClickHandler = () => stateSetter(state => {
-		const newState = state + valueAddedOnClick;
+	const onPointerDownHandler = time => {
+		stateSetter(state => {
+			const newState = state + valueAddedOnClick;
+	
+			return (newState > MAX)? MAX : (newState < MIN)? MIN : newState;
+		});
 
-		return (newState > MAX)? MAX : (newState < MIN)? MIN : newState;
-	});
+		time = (time < MIN_HOLD_DURATION)? MIN_HOLD_DURATION : time / 2;
+
+		timeoutID = setTimeout(() => onPointerDownHandler(time), time);
+	}
 
 	return (
 		<button id={id} 
 				className={'cursor-pointer scale-100 transition-transform duration-150 ease-in-out ' + (disabled === TIMER_STATE.WAITING ? 'hover:scale-150' : '')}
-				onClick={onClickHandler}
+				onPointerDown={() => onPointerDownHandler(MAX_HOLD_DURATION)}
+				onPointerUp={() => clearTimeout(timeoutID)}
 				disabled={disabled === TIMER_STATE.WAITING ? false : true}>
 			<FontAwesomeIcon className="text-primary-green" icon={btnIcon} />
 		</button>
