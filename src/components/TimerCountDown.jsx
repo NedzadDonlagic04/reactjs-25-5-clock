@@ -13,9 +13,6 @@ function TimerCountDown({ sessionLength, breakLength, timerState }) {
 		if(state === TIMER_STATE.RESET) {
 			prev.text = 'Session';
 			prev.time = sessionLength * 60;
-
-			beepAudio.current.pause();
-			beepAudio.current.currentTime = 0;
 		} else {
 			prev.time--;
 

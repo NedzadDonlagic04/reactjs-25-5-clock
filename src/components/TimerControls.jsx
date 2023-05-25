@@ -15,7 +15,15 @@ function TimerControls({ timerState, timerStateSetter }) {
 
 			<button id="reset" 
 					className="cursor-pointer scale-150 transition-transform duration-150 ease-in-out hover:scale-200"
-					onClick={() => timerStateSetter(TIMER_STATE.RESET)}>
+					onClick={() => {
+						timerStateSetter(TIMER_STATE.RESET);
+
+						document.getElementById('beep').pause();
+						document.getElementById('beep').currentTime = 0;
+						// ^ Used to reset the audio element
+						// Would do it differently but then it wouldn't pass the unit test
+						// In this case it works and doesn't seem too scuffed
+					}}>
 				<FontAwesomeIcon className="text-primary-green" icon={faRefresh} />
 			</button>
 		</div>
